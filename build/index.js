@@ -2,9 +2,9 @@ const rm = require("rimraf"),
     rollup = require("rollup"),
     babel = require("rollup-plugin-babel"),
     nodeResolve = require("rollup-plugin-node-resolve"),
-    vue = require("rollup-plugin-vue"),
+    vue = require("rollup-plugin-vue").default,
     commonjs = require("rollup-plugin-commonjs"),
-    uglify = require("rollup-plugin-uglify");
+    terser = require("rollup-plugin-terser").terser;
 const pkg = require("../package");
 const buildOption = {
     input: {
@@ -24,7 +24,7 @@ const buildOption = {
                 exclude: "node_modules/**",
                 runtimeHelpers: true
             }),
-            uglify()
+            terser()
         ]
     },
     output: {
